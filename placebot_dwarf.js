@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DwarfPlacer
 // @namespace    dwarfplacer
-// @version      0.3.2
+// @version      0.3.3
 // @description  /r/place bot for DF
 // @author       NiftyManiac
 // @match        https://www.reddit.com/place*
@@ -80,17 +80,18 @@ function attempt(){
     for(var groupi=0; groupi<groups.length; groupi++){
         for(var groupj=0; groupj<groups[groupi].n; groupj++){
             var group = groups[groupi];
+            var offset = 0;
+            if(randomize==1){
+                offset = Math.floor(Math.random()*group.box.colors.length);
+            }
             next_pixel:
             for(var i=0; i<group.box.colors.length; i++){
-                if(randomize==1){
-                  var index = (i + Math.floor(Math.random()*group.box.colors.length))%group.box.colors.length;
-                }else{
-                  var index = i;
-                }
+                var index = (i + offset)%group.box.colors.length;
+
                 if(group.box.colors[index] === -1){
                     continue next_pixel;
                 }
-                
+
                 var targetPoint = getPoint(group.box,index);
 
                 targetPoint.x = targetPoint.x + group.x + groupj*group.dx;
