@@ -42,6 +42,7 @@ var canvasse;
 var jQuery;
 
 var test = 0;
+var randomize = 0;
 var refreshtime = 0;
 
 // if there's an issue loading, reload after 5 sec
