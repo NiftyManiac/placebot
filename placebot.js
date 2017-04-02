@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Placer
 // @namespace    placer
-// @version      0.2
+// @version      0.3.0
 // @description  /r/place bot
 // @author       NiftyManiac
 // @match        https://www.reddit.com/place*
@@ -22,6 +22,7 @@
   3,2,3,2
 ];
 var colorsABGR = [];
+var colorsIndex = {};
 
 var box_r = {
   x: 0,
@@ -87,6 +88,7 @@ if (typeof r == 'undefined'){
 
       for(var i=0; i<client.palette.length; i++){
         colorsABGR[i] = client.getPaletteColorABGR(i);
+        colorsIndex[colorsABGR[i]] = i;
       }
 
       // Start
@@ -132,7 +134,7 @@ function attempt(){
 
                     client.setColor(group.box.colors[i]);
                     client.drawTile(targetPoint.x, targetPoint.y);
-                    console.log("Drawing tile", targetPoint.x, targetPoint.y, "Color", group.box.colors[i], "OldColor",pixelColor, "NewColor",colorsABGR[colors[i]]);
+                    console.log("Drawing tile", targetPoint.x, targetPoint.y, "Color", group.box.colors[i], "OldColor",colorsIndex[pixelColor]);
                     break outer;
                 }
             }
