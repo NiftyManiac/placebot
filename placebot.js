@@ -6,6 +6,7 @@
 // @author       NiftyManiac
 // @match        https://www.reddit.com/place*
 // @grant        none
+// @updateURL https://raw.githubusercontent.com/NiftyManiac/placebot/master/placebot.js
 // ==/UserScript==
 
 //based on something I found on t_d
