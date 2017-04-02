@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Placer
 // @namespace    placer
-// @version      0.1
+// @version      0.2
 // @description  /r/place bot
 // @author       NiftyManiac
 // @match        https://www.reddit.com/place*
@@ -75,23 +75,29 @@ var jQuery;
 var test = 0;
 var refreshtime = 0;
 
-r.placeModule("Fact", function(e){
-  client = e("client");
-  canvasse = e("canvasse");
-  jQuery = e("jQuery");
+// if there's an issue loading, reload after 5 sec
+if (typeof r == 'undefined'){
+    setTimeout(function(){location.reload();}, 5000);
+}else{
+    
+    r.placeModule("Fact", function(e){
+      client = e("client");
+      canvasse = e("canvasse");
+      jQuery = e("jQuery");
 
-  for(var i=0; i<client.palette.length; i++){
-    colorsABGR[i] = client.getPaletteColorABGR(i);
-  }
+      for(var i=0; i<client.palette.length; i++){
+        colorsABGR[i] = client.getPaletteColorABGR(i);
+      }
 
-  // Start
-  console.log("Starting...");
-  refreshtime = new Date().getTime();
-  window.addEventListener('load', function() {
-    attempt();
-}, false);
+      // Start
+      console.log("Starting...");
+      refreshtime = new Date().getTime();
+      window.addEventListener('load', function() {
+        attempt();
+    }, false);
 
-});
+    });
+}
 
 function attempt(){
   var toWait = client.getCooldownTimeRemaining();
