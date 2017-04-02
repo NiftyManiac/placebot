@@ -56,7 +56,7 @@ var groups = [
     {x: 442, y:170, dx:0, dy:4, n:15, box:box_u},//left border of plagueis
     {x: 439, y:150, dx:0, dy:4, n:3, box:box_u},//left of "D"
     {x: 508, y:148, dx:-4, dy:0, n:12, box:box_r},//top border of plagueis
-    {x: 519, y:138, dx:4, dy:0, n:12, box:box_r}  //top of /r/factorio
+    //{x: 519, y:138, dx:4, dy:0, n:12, box:box_r}  //top of /r/factorio [disabled because of science packs that are now there]
     ];
 
 //ignore these points
