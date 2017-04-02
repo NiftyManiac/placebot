@@ -32,7 +32,7 @@ var groups = [
     ];
 
 //ignore these points
-var exceptions = []
+var exceptions = [];
 
 var placed = 0;
 
@@ -42,7 +42,7 @@ var canvasse;
 var jQuery;
 
 var test = 0;
-var randomize = 0;
+var randomize = 1;
 var refreshtime = 0;
 
 // if there's an issue loading, reload after 5 sec
