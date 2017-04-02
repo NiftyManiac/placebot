@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Placer
 // @namespace    placer
-// @version      0.3.0
+// @version      0.3.1
 // @description  /r/place bot
 // @author       NiftyManiac
 // @match        https://www.reddit.com/place*
