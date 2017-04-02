@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Placer
 // @namespace    placer
-// @version      0.3.1
+// @version      0.3.2
 // @description  /r/place bot
 // @author       NiftyManiac
 // @match        https://www.reddit.com/place*
@@ -14,13 +14,6 @@
 (function() {
     'use strict';
 
-    var colors = [
-  3,2,3,2,
-  2,8,2,2,
-  2,2,8,2,
-  2,8,2,2,
-  3,2,3,2
-];
 var colorsABGR = [];
 var colorsIndex = {};
 
@@ -110,12 +103,13 @@ function attempt(){
     outer:
     for(var groupi=0; groupi<groups.length; groupi++){
         for(var groupj=0; groupj<groups[groupi].n; groupj++){
+            var group = groups[groupi];
             next_pixel:
-            for(var i=0; i<colors.length; i++){
-                if(colors[i] === -1){
+            for(var i=0; i<group.box.colors.length; i++){
+                if(group.box.colors[i] === -1){
                     continue next_pixel;
                 }
-                var group = groups[groupi];
+                
                 var targetPoint = getPoint(group.box,i);
 
                 targetPoint.x = targetPoint.x + group.x + groupj*group.dx;
@@ -123,7 +117,7 @@ function attempt(){
                 var pixelColor = getPixel(targetPoint.x, targetPoint.y);
                 if(pixelColor !== colorsABGR[group.box.colors[i]]){
                     // don't replace red/blue tiles with yellow
-                    if(colors[i] == 8 && (pixelColor==colorsABGR[5] || pixelColor==colorsABGR[12] || pixelColor==colorsABGR[13] || pixelColor==colorsABGR[11])){ 
+                    if(group.box.colors[i] == 8 && (pixelColor==colorsABGR[5] || pixelColor==colorsABGR[12] || pixelColor==colorsABGR[13] || pixelColor==colorsABGR[11])){ 
                         continue next_pixel;
                     }
                     for(var excepi=0; excepi<exceptions.length; excepi++){
