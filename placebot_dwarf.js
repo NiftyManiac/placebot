@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DwarfPlacer
 // @namespace    dwarfplacer
-// @version      0.3.3
+// @version      0.3.4
 // @description  /r/place bot for DF
 // @author       NiftyManiac
 // @match        https://www.reddit.com/place*
@@ -96,6 +96,10 @@ function attempt(){
 
                 targetPoint.x = targetPoint.x + group.x + groupj*group.dx;
                 targetPoint.y = targetPoint.y + group.y + groupj*group.dy;
+
+                if(targetPoint.x < 119){
+                    continue next_pixel;
+                }
                 var pixelColor = getPixel(targetPoint.x, targetPoint.y);
                 if(pixelColor !== colorsABGR[group.box.colors[index]]){
                     // don't replace red/blue tiles with yellow
@@ -107,6 +111,7 @@ function attempt(){
                           continue next_pixel;
                         }
                     }
+                    
 
                     client.setColor(group.box.colors[index]);
                     client.drawTile(targetPoint.x, targetPoint.y);
